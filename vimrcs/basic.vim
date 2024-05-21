@@ -10,6 +10,7 @@
 "           https://github.com/amix/vimrc
 "
 " Sections:
+"    -> Sungvim Custom
 "    -> General
 "    -> VIM user interface
 "    -> Colors and Fonts
@@ -25,6 +26,17 @@
 "    -> Helper functions
 "
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
+
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" => Sungvim Custom
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
+" Set to turn on line numbers
+set number
+
+
 
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
