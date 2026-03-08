@@ -3,23 +3,21 @@ local langs = { "bash", "go", "json", "kotlin", "lua", "markdown", "python", "ru
 
 return {
   "nvim-treesitter/nvim-treesitter",
-  build = ":TSInstall " .. table.concat(langs, " "),
-  event = { "BufReadPost", "BufNewFile" },
+  commit = "42fc28ba918343ebfd5565147a42a26580579482",
+  lazy = false,
+  build = ":TSUpdate",
   config = function()
-    -- 누락된 파서 비동기 자동 설치
-    local installed = require("nvim-treesitter.config").get_installed()
-    local missing = vim.tbl_filter(function(lang)
-      return not vim.list_contains(installed, lang)
-    end, langs)
-    if #missing > 0 then
-      require("nvim-treesitter.install").install(missing)
-    end
-
-    -- filetype별 treesitter 하이라이팅 활성화
-    vim.api.nvim_create_autocmd("FileType", {
-      callback = function(ev)
-        pcall(vim.treesitter.start, ev.buf)
-      end,
+    require("nvim-treesitter.configs").setup({
+      parser_install_dir = vim.fn.stdpath("data") .. "/site",
+      ensure_installed = langs,
+      auto_install = true,
+      highlight = {
+        enable = true,
+        additional_vim_regex_highlighting = false,
+      },
+      indent = {
+        enable = true,
+      },
     })
   end,
 }
